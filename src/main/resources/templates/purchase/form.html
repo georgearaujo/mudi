@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron mb-0">
+                <h1 class="display-4">Novo Pedido</h1>
+            </div>
+
+            <div class="card mt-3">
+                <form th:object="${createPurchase}" class="card-body" action="/purchase/new" method="POST">
+                    <div class="form-group">
+                        <label for="productName">Product</label>
+                        <input th:field="*{productName}" th:errorclass="is-invalid" class="form-control" name="productName" placeholedr="Product name" />
+                        <small>Enter the product name.</small>
+                        <div th:errors="*{productName}" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productUrl">Url</label>
+                        <input th:field="*{productUrl}" th:errorclass="is-invalid" class="form-control" name="productUrl" placeholedr="Product url" />
+                        <small>Search a website for the product you want and paste the page url here.</small>
+                        <div th:errors="*{productUrl}" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageUrl">Image</label>
+                        <input th:field="*{imageUrl}" th:errorclass="is-invalid" class="form-control" name="imageUrl" placeholedr="Image url" />
+                        <small>Copy the url of a good product image and paste it here to help get buyers.</small>
+                        <div th:errors="*{imageUrl}" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea th:field="*{description}" th:errorclass="is-invalid" class="form-control" name="description" placeholder="Add important details to help the buyer."></textarea>
+                        <div th:errors="*{description}" class="invalid-feedback"></div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
